@@ -35,6 +35,9 @@ class ControladorCalculadora:
                         operacion = f"{num1} / {num2} = {resultado}"
                         self.modelo.agregar_operacion(operacion)
                     case 5:
+                        operaciones = self.modelo.obtener_operaciones()
+                        self.vista.mostrar_historial(operaciones)
+                    case 6:
                         break
                     case _:
                         print("Opcion invalida, vuelva a intentarlo")   

@@ -27,3 +27,8 @@ class ModeloCalculadora:
         self.cursor.execute(consulta, (operacion,))
         self.conexion.commit()
     
+    def obtener_historial(self):
+        self.cursor.execute("SELECT * FROM operaciones")
+        return self.cursor.fetchall()
+
+    
