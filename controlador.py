@@ -1,3 +1,4 @@
+from mysql.connector import Error as e
 class ControladorCalculadora:
     def __init__(self, modelo, vista):
         self.modelo = modelo
@@ -15,13 +16,14 @@ class ControladorCalculadora:
                         resultado = self.modelo.suma(num1, num2)
                         self.vista.mostrar_resultado(resultado)
                         operacion = f"{num1} + {num2} = {resultado}"
+                        print(type(operacion))
                         self.modelo.agregar_operacion(operacion)
                     case 2:
                         num1, num2 = self.vista.pedir_numeros(numeros[0], numeros[1])
                         resultado = self.modelo.resta(num1, num2)
                         self.vista.mostrar_resultado(resultado)
-                        operacion = f"{num1} - {num2} = {resultado}"
-                        self.modelo.agregar_operacion(operacion)
+                        operacion = f'{num1} - {num2} = {resultado}'
+                        self.modelo.agregar_operacion("Hola")
                     case 3:
                         num1, num2 = self.vista.pedir_numeros(numeros[0], numeros[1])
                         resultado = self.modelo.multiplicacion(num1, num2)
@@ -35,7 +37,7 @@ class ControladorCalculadora:
                         operacion = f"{num1} / {num2} = {resultado}"
                         self.modelo.agregar_operacion(operacion)
                     case 5:
-                        operaciones = self.modelo.obtener_operaciones()
+                        operaciones = self.modelo.obtener_historial()
                         self.vista.mostrar_historial(operaciones)
                     case 6:
                         break
@@ -43,5 +45,5 @@ class ControladorCalculadora:
                         print("Opcion invalida, vuelva a intentarlo")   
                         
 
-            except:
-                print("Opcion invalida, vuelva a intentarlo")
+            except e:
+                print(f"Opcion invalida, vuelva a intentarlo: {e}")
