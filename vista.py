@@ -6,7 +6,9 @@ class VistaCalculadora:
         print("2. Resta")
         print("3. Multiplicacion")
         print("4. Division")
-        print("5. Salir")
+        print("5. Ver historial")
+        print("6. Salir")
+
 
     @staticmethod
     def pedir_opcion():
@@ -21,3 +23,9 @@ class VistaCalculadora:
         num1 = int(input(f"Ingresa el {primero}: "))
         num2 = int(input(f"Ingresa la {segundo}: "))
         return num1, num2
+    
+    @staticmethod
+    def mostrar_historial(operaciones):
+        print("ID  OPERACION     FECHA")
+        for i in operaciones:
+            print(f"{i[0]} {i[1]}   {i[2]}")
