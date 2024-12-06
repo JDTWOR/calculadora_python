@@ -1,4 +1,16 @@
+import mysql.connector
+from mysql.connector import Error as e
+
 class ModeloCalculadora:
+    def __init__(self):
+        
+        self.conexion = mysql.connector.connect(
+        host="localhost",
+        user="root",
+        password="",
+        database="calculadora")
+        self.cursor = self.conexion.cursor()
+
     def suma(num1, num2):
         return num1 + num2
     
