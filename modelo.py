@@ -1,15 +1,17 @@
 import mysql.connector
 from mysql.connector import Error as e
 
-class ModeloCalculadora:
-    def __init__(self):
-        conexion = mysql.connector.connect(
-        host="localhost",
-        user="root",
-        password="",
-        database="calculadora")
-        cursor = self.conexion.cursor()
+try:
+    conexion = mysql.connector.connect(
+    host='localhost',
+    user='root',
+    password='',
+    database='calculadora')
+    cursor = conexion.cursor()
+except:
+    print("Error al conectar a la base de datos")
 
+class ModeloCalculadora:
     def suma(num1, num2):
         return num1 + num2
     
@@ -24,13 +26,22 @@ class ModeloCalculadora:
             return False    
         return num1 / num2
     
-    def agregar_operacion(self, operacion):
-        consulta = "INSERT INTO operaciones (operacion) VALUES (%s)"
-        self.cursor.execute(consulta, (operacion,))
-        self.conexion.commit()
+    @staticmethod
+    def agregar_operacion(num1, id_signo, num2, resultado):
+        consulta = "INSERT INTO historial (primer_numero, id_signo, segundo_numero, resultado) VALUES (%s, %s, %s, %s)"
+        cursor.execute(consulta, (num1, id_signo, num2, resultado))
+        conexion.commit()
     
-    def obtener_historial(self):
-        self.cursor.execute("SELECT * FROM operaciones")
-        return self.cursor.fetchall()
+    def obtener_historial():
+        cursor.execute("""SELECT
+                            h.id, 
+                            h.primer_numero, 
+                            s.simbolo, 
+                            h.segundo_numero, 
+                            h.resultado,
+                            h.fecha
+                       FROM historial h 
+                       INNER JOIN signo s ON s.id = h.id_signo""")
+        return cursor.fetchall()
 
     

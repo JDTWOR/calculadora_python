@@ -26,9 +26,9 @@ class VistaCalculadora:
     
     @staticmethod
     def mostrar_historial(operaciones):
-        print("ID  OPERACION     FECHA")
+        print("ID   OPERACION     FECHA")
         for i in operaciones:
-            print(f"{i[0]}   {i[1]}   {i[2]}")
+            print(f"{i[0]}  ({i[1]} {i[2]} {i[3]} = {i[4]}   {i[5]}")
 
     @staticmethod
     def mostrar_mensaje(mensaje):
