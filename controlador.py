@@ -31,9 +31,13 @@ class ControladorCalculadora:
                     case 4:
                         num1, num2 = self.vista.pedir_numeros(numeros[2], numeros[3])
                         resultado = self.modelo.division(num1, num2)
-                        self.vista.mostrar_resultado(resultado)
-                        operacion = f"{num1} / {num2} = {resultado}"
-                        self.modelo.agregar_operacion(operacion)
+                        if resultado ==  False:
+                            mensaje = "No se puede dividir entre cero"
+                            self.vista.mostrar_mensaje(mensaje)
+                        else:
+                            self.vista.mostrar_resultado(resultado)
+                            operacion = f"{num1} / {num2} = {resultado}"
+                            self.modelo.agregar_operacion(operacion)
                     case 5:
                         operaciones = self.modelo.obtener_operaciones()
                         self.vista.mostrar_historial(operaciones)
