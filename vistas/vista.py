@@ -9,7 +9,6 @@ class VistaCalculadora:
         print("5. Ver historial")
         print("6. Salir")
 
-
     @staticmethod
     def pedir_opcion():
         return int(input("Ingresa la operacion a realizar: "))
@@ -26,9 +25,9 @@ class VistaCalculadora:
     
     @staticmethod
     def mostrar_historial(operaciones):
-        print("ID   OPERACION     FECHA")
+        print("ID     OPERACION           FECHA")
         for i in operaciones:
-            print(f"{i[0]}  {i[1]} {i[2]} {i[3]} = {i[4]}   {i[5]}")
+            print(f"{i[0]:<5}  {i[1]} {i[2]} {i[3]} = {i[4]:<8}   {i[5]}")
 
     @staticmethod
     def mostrar_mensaje(mensaje):
