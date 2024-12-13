@@ -8,8 +8,8 @@ try:
     password='',
     database='calculadora')
     cursor = conexion.cursor()
-except:
-    print("Error al conectar a la base de datos")
+except e:
+    print(f"Error: {e}")
 
 class ModeloCalculadora:
     def suma(num1, num2):
